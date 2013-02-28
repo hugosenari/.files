@@ -1,0 +1,8 @@
+[alias]
+  s = status -s
+  c = commit -m
+  b = branch
+  ls = branch
+  cd = checkout
+  df = diff
+  lg = log -p
