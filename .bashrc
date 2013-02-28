@@ -106,6 +106,10 @@ if [ -f ~/.ps1rc ]; then
 	. ~/.ps1rc
 fi
 
+if [ -f ~/.local_bashrc]; then
+	. ~/.local_bashrc
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
