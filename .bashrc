@@ -106,7 +106,7 @@ if [ -f ~/.ps1rc ]; then
 	. ~/.ps1rc
 fi
 
-if [ -f ~/.local_bashrc]; then
+if [ -f ~/.local_bashrc ]; then
 	. ~/.local_bashrc
 fi
 
