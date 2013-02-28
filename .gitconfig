@@ -6,3 +6,5 @@
   cd = checkout
   df = diff
   lg = log -p
+[core]
+	excludesfile = /home/hugosenari/.gitignore_global
