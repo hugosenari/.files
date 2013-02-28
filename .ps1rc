@@ -61,7 +61,7 @@ bash_prompt() {
 	local BGC="\[\033[46m\]"
 	local BGW="\[\033[47m\]"
 	
-	local BC=${B}			# brachs color
+	local BC=${C}			# brachs color
 	[ "$(get_git_branch)" == "master" ] && BC=${R}	# master branch color
 
 	local SEP="$EMB\342\224\200"
