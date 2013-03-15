@@ -10,11 +10,14 @@
 	bd = branch -D
 	bs = branch --no-merged
 	bname = rev-parse --abbrev-ref HEAD
+	bdesc = "!f() { BNAME=`git bname`; if [ $# -gt "0" ]; then BNAME=$1; fi; if [ $# -lt "2" ]; then git config branches.$BNAME.description; else git config branches.$BNAME.description \"$2\"; fi; }; f"
+	bissue = "!f() { git cd -b $1; git config branches.$1.description \"$2\"; git push -u origin $1; }; f"
 	cd = checkout
 	cdb = checkout -b
 	master = checkout master
 	head = checkout head
-	c = commit -m
+	c = commit -m	
+	cbissue = "!f() { git c \"issue: `git bname` - `git bdesc`; commit: $1\" $2;}; f"
 	d = diff --word-diff
 	g = pull
 	get = pull
