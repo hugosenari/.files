@@ -7,7 +7,7 @@
 [alias]
 	b = branch
 	bl = branch --all
-	bd = branch -D
+	bdel = "!f() { git branch -D $1; git push origin :$1; }; f"
 	bs = branch --no-merged
 	bname = rev-parse --abbrev-ref HEAD
 	bdesc = "!f() { BNAME=`git bname`; if [ $# -gt "0" ]; then BNAME=$1; fi; if [ $# -lt "2" ]; then git config branches.$BNAME.description; else git config branches.$BNAME.description \"$2\"; fi; }; f"
