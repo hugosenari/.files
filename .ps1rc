@@ -73,9 +73,7 @@ bash_prompt() {
 
 	local USER_AT="${DOWN}${SEP}${BEG}${G}\u${AT}\h${ENDY}"
 	local GIT_STAT="${SEP}${BEG}${BC}$(get_git_branch):${Y}$(get_git_diff)${ENDY}"
-	local HISTORY="${SEP}${BEG}${G}!\!${ENDY}"
 	local DIR="${BR}${Y}\w${NONE} $ "
-	PS1="${TITLEBAR}${USER_AT}${GIT_STAT}${HISTORY}${DIR}"
-}
+	PS1="${TITLEBAR}${USER_AT}${GIT_STAT}${DIR}"
 
 PROMPT_COMMAND=bash_prompt
