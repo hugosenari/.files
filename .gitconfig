@@ -17,7 +17,7 @@
 	master = checkout master
 	head = checkout head
 	c = commit -m	
-	cbissue = "!f() { git c \"issue: #`git bname` - `git bdesc`; commit: $1\" $2;}; f"
+	cbissue = "!f() { MSG=$1; shift; git c \"issue: `git bname` - `git bdesc`; commit: $MSG\" $*; }; f"
 	d = diff --word-diff
 	g = pull
 	get = pull
