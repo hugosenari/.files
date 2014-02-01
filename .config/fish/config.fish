@@ -11,6 +11,8 @@ set __fish_git_prompt_char_stashstate '%'
 set __fish_git_prompt_char_upstream_ahead '>'
 set __fish_git_prompt_char_upstream_behind '<'
 
+set PATH $PATH /home/hugosenari/.local/bin
+
 
 function fish_right_prompt
         set last_status $status
