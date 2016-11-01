@@ -45,8 +45,14 @@
 	major = "!f() { git describe --tags|cut -f1 -d.|tr -d 'v'; }; f"
 	minor = "!f() { git describe --tags|cut -f2 -d.; }; f"
 	revision = "!f() { git describe --tags|cut -f3 -d.|cut -f1 -d-; }; f"
-	current = "!f() { git describe --tags|cut -f3 -d.|cut -f2 -d-; }; f"
-	migrationpath = "!f() { echo database/migration/v`git major`.`git minor`/v`git major`.`git minor`.`git revision`/v`git major`.`git minor`.`git revision`.`git current`_;}; f"
+	rcommit = "!f() { git describe --tags|cut -f3 -d.|cut -f2 -d-; }; f"
+	rminor = "!f() { echo `git major`.`git minor`; }; f"
+	current = "!f() { echo `git rminor`.`git revision`; }; f"
+	nexttag = "!f() { echo `git rminor`.$((`git revision`+1)); }; f"
+
+	tagnext = "!f() { git tag v`git nexttag`; git push --tags; }; f"
+
+	migrationpath = "!f() { echo database/migration/v`git rminor`/v`git current`/v`git current`_;}; f"
 	migration = "!f() { echo `git migrationpath`$@.sql|tr ' ' '_';}; f"
 
 [push]
