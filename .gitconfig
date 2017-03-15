@@ -52,7 +52,7 @@
 
 	tagnext = "!f() { git tag v`git nexttag`; git push --tags; }; f"
 
-	migrationpath = "!f() { echo database/migration/v`git rminor`/v`git current`/v`git current`_;}; f"
+	migrationpath = "!f() { echo database/migration/v`git rminor`/v`git current`/v`git current`.`git rcommit`_;}; f"
 	migration = "!f() { echo `git migrationpath`$@.sql|tr ' ' '_';}; f"
 
 [push]
