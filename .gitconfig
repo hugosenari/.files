@@ -11,14 +11,15 @@
 	bdel = "!f() { git branch -D $1; git push origin :$1; }; f"
 	bdesc = "!f() { BNAME=`git bname`; if [ $# -gt "0" ]; then BNAME=$1; fi; if [ $# -lt "2" ]; then git config branches.$BNAME.description; else git config branches.$BNAME.description \"$2\"; fi; }; f"
 	bissue = "!f() { git cd -b $1; git config branches.$1.description \"$2\"; git push -u origin $1; }; f"
+  cdissue = "!f() { git checkout --track origin/$1 -b $1; git config branches.$1.description \"$2\"; }; f"
 	ignore = "!f() { echo $@ >> `git rev-parse --show-toplevel`/.gitignore; }; f"
 	bl = branch --all
 	bl = branch --all
 	bname = rev-parse --abbrev-ref HEAD
 	bs = branch --no-merged
 	bs = branch --no-merged
-	cbissue = "!f() { git c \"issue: `git bname` - `git bdesc`; commit: $1\" $2;}; f"
-	c = commit -m	
+	cbissue = "!f() { git c \"`git bname` - `git bdesc`; commit: $1\" $2;}; f"
+	c = commit -m
 	cdb = checkout -b
 	cd = checkout
 	d = diff --word-diff
@@ -32,7 +33,7 @@
 	master = checkout master
 	mc = merge --continue
 	md = merge dev
-	
+
 	m = merge
 	mm = merge master
 	mt = mergetool
