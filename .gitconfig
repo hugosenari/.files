@@ -39,3 +39,5 @@
 [user]
 	email = hugosenari@gmail.com
 	name = hugosenari
+[core]
+	excludesfile = ~/.gitignore_global

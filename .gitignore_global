@@ -43,3 +43,12 @@ Desktop.ini
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
+
+
+Pipfile.lock
+*.code-workspace
+*/.pytest_cache
+.pytest_cache
+*/.vscode
+*.txt
+*.data
