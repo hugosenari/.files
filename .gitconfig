@@ -36,3 +36,6 @@
 	lsm = ls-tree --name-only master
 [push]
 	default = tracking
+[user]
+	email = hugosenari@gmail.com
+	name = hugosenari
