@@ -2,42 +2,62 @@
 	diff = auto
 	status = auto
 	branch = auto
+
 [branch]
 	autosetuprebase = always
+
 [alias]
 	b = branch
-	bl = branch --all
 	bdel = "!f() { git branch -D $1; git push origin :$1; }; f"
-	bs = branch --no-merged
-	bname = rev-parse --abbrev-ref HEAD
 	bdesc = "!f() { BNAME=`git bname`; if [ $# -gt "0" ]; then BNAME=$1; fi; if [ $# -lt "2" ]; then git config branches.$BNAME.description; else git config branches.$BNAME.description \"$2\"; fi; }; f"
 	bissue = "!f() { git cd -b $1; git config branches.$1.description \"$2\"; git push -u origin $1; }; f"
-	cd = checkout
+  cdissue = "!f() { git checkout --track origin/$1 -b $1; git config branches.$1.description \"$2\"; }; f"
+	ignore = "!f() { echo $@ >> `git rev-parse --show-toplevel`/.gitignore; }; f"
+	bl = branch --all
+	bl = branch --all
+	bname = rev-parse --abbrev-ref HEAD
+	bs = branch --no-merged
+	bs = branch --no-merged
+	cbissue = "!f() { git c \"`git bname` - `git bdesc`; commit: $1\" $2;}; f"
+	c = commit -m
 	cdb = checkout -b
-	master = checkout master
-	head = checkout head
-	c = commit -m	
-	cbissue = "!f() { MSG=$1; shift; git c \"issue: `git bname` - `git bdesc`; commit: $MSG\" $*; }; f"
+	cd = checkout
 	d = diff --word-diff
-	g = pull
+	df = diff
 	get = pull
-	m = merge
-	mc = merge --continue
-	md = merge dev
-	mm = merge master
-	mt = mergetool
-	p = push
-	post = push
-	r = rebase master
-	rc = rebase --continue
-	s = status -s
-	undo = reset --hard
+	g = pull
+	head = checkout head
+	lg = log -p
 	ls = ls-tree --name-only
 	lsm = ls-tree --name-only master
+	master = checkout master
+	mc = merge --continue
+	md = merge dev
+
+	m = merge
+	mm = merge master
+	mt = mergetool
+	post = push
+	p = push
+	rc = rebase --continue
+	r = rebase master
+	s = status -s
+	undo = reset --hard
+	major = "!f() { git describe --tags|cut -f1 -d.|tr -d 'v'; }; f"
+	minor = "!f() { git describe --tags|cut -f2 -d.; }; f"
+	revision = "!f() { git describe --tags|cut -f3 -d.|cut -f1 -d-; }; f"
+	rcommit = "!f() { git describe --tags|cut -f3 -d.|cut -f2 -d-; }; f"
+	rminor = "!f() { echo `git major`.`git minor`; }; f"
+	current = "!f() { echo `git rminor`.`git revision`; }; f"
+	nexttag = "!f() { echo `git rminor`.$((`git revision`+1)); }; f"
+
+	tagnext = "!f() { git tag v`git nexttag`; git push --tags; }; f"
+
+	migrationpath = "!f() { echo database/migration/v`git rminor`/v`git current`/v`git current`.`git rcommit`_;}; f"
+	migration = "!f() { echo `git migrationpath`$@.sql|tr ' ' '_';}; f"
+
 [push]
 	default = tracking
 [user]
-	email = hugosenari@gmail.com
-	name = hugosenari
-[core]
-	excludesfile = ~/.gitignore_global
+	email = hugo.ribeiro@net.com.br
+	name = Hugo Ribeiro
