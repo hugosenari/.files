@@ -1,6 +1,6 @@
 # Defined in - @ line 1
 function task --wraps='git checkout -b $argv[1]; git config branch.$argv[1].description $argv[2]; git push -u origin $argv[1]' --description 'alias issue=git checkout -b $argv[1]; git config branch.$argv[1].description $argv[2]; git push -u origin $argv[1]'
-  set YD_DM (date +%j)(echo (date +%H)'*'(date +%M)|bc)
+  set YD_DM (date +%j)(echo (date +%H)'*'(date +%M)|bc)(date +%S)
   set ISSUE  (pwbd|head -1|tail -1)
   set TYPE   (pwbd|head -2|tail -1)
   set SCOPE  (pwbd|head -3|tail -1)
