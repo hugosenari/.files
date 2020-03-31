@@ -3,4 +3,5 @@ function done --wraps='parent; git merge task' --description 'alias done "parent
   set CURRENT (pwb)
   parent
   git merge $CURRENT;
+  branch-clear
 end
