@@ -13,3 +13,5 @@
 	name = hugosenari
 [core]
 	excludesfile = ~/.gitignore_global
+[credential]
+	helper = /usr/lib/git-core/git-credential-libsecret
